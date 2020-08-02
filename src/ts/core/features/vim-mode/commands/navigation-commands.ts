@@ -11,9 +11,10 @@ export const NavigationCommands = [
     nmap('shift+g', 'Select Last Block', () => RoamPanel.selected().selectLastBlock()),
     nmap('ctrl+u', 'Select Many Blocks Up', () => RoamVim.jumpBlocksInFocusedPanel(-8)),
     nmap('ctrl+d', 'Select Many Blocks Down', () => RoamVim.jumpBlocksInFocusedPanel(8)),
-    nvmap('ctrl+y', 'Scroll Up', () => RoamPanel.selected().scrollAndReselectBlockToStayVisible(-50)),
+    nvmap('ctrl+p', 'Scroll Up', () => RoamPanel.selected().scrollAndReselectBlockToStayVisible(-50)),
     // Avoid insert mode, to allow native ctrl-e to go to end of line
-    nvmap('ctrl+e', 'Scroll Down', () => RoamPanel.selected().scrollAndReselectBlockToStayVisible(50)),
+    nvmap('ctrl+n', 'Scroll Down', () => RoamPanel.selected().scrollAndReselectBlockToStayVisible(50)),
+    nvmap('ctrl+o', 'Back', () => window.history.back()),
     nimap('alt+z', 'Expand Last Reference Breadcrumb', expandLastBreadcrumb),
     nmap('shift+z', 'Collapse the view for the page in references (or query) section', closePageReferenceView),
 ]
