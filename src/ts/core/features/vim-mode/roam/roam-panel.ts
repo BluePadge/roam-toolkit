@@ -4,6 +4,7 @@ import {Selectors} from 'src/core/roam/selectors'
 import {assumeExists} from 'src/core/common/assert'
 import {BlockElement, BlockId, RoamBlock} from 'src/core/features/vim-mode/roam/roam-block'
 import {relativeItem} from 'src/core/common/array'
+import {Mouse} from 'src/core/common/mouse'
 
 type BlockNavigationState = {
     panelOrder: PanelId[]
@@ -84,7 +85,9 @@ export class RoamPanel {
     selectBlock(blockId: BlockId) {
         this._selectedBlockId = blockId
         this.blockIndex = this.indexOf(blockId)
-        this.scrollUntilBlockIsVisible(this.selectedBlock().element)
+        const current = this.selectedBlock().element
+        this.scrollUntilBlockIsVisible(current)
+        Mouse.hover(current)
     }
 
     selectRelativeBlock(blocksToJump: number) {
